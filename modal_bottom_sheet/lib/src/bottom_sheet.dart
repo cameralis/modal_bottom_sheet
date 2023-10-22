@@ -5,7 +5,6 @@
 import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/src/utils/scroll_to_top_status_bar.dart';
 
 import 'package:modal_bottom_sheet/src/utils/bottom_sheet_suspended_curve.dart';
 
@@ -366,7 +365,7 @@ class ModalBottomSheetState extends State<ModalBottomSheet>
       );
     }
 
-    child = AnimatedBuilder(
+    return AnimatedBuilder(
       animation: widget.animationController,
       builder: (context, Widget? child) {
         assert(child != null);
@@ -411,11 +410,6 @@ class ModalBottomSheetState extends State<ModalBottomSheet>
         );
       },
       child: RepaintBoundary(child: child),
-    );
-
-    return ScrollToTopStatusBarHandler(
-      child: child,
-      scrollController: _scrollController,
     );
   }
 }
